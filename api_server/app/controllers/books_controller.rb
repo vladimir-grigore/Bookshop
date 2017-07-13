@@ -2,12 +2,12 @@ class BooksController < ApplicationController
   
   def index
     @books = Book.all
-    pp @books
+    render json: @books
   end
 
   def show
     @book = Book.find(params[:id])
-    pp @book
+    render json: @book
   end
-  
+
 end
