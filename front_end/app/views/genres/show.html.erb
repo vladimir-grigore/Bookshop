@@ -1,0 +1,16 @@
+<section class="genre-details">
+
+  <header class="page-header">
+    <h1>Books by genre</h1>
+  </header>
+
+  <% @genre.each do |book|%>
+    <div>
+      <span><%= book['name'] %>	&nbsp; </span><span><%= book['price'] %></span>
+      <%= link_to book_path(id: book['id']), class: 'btn btn-default' do %>
+        Details
+      <% end %>
+    </div>
+  <% end %>
+
+</section>

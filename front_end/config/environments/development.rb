@@ -26,15 +26,6 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Action mailer
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { host: '127.0.0.1', port: 3001 }
-
-  # Raise error if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
-
-  config.action_mailer.perform_caching = false
-
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -56,14 +47,26 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  # Action mailer
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { host:'localhost', port: '3001' }
+
+  # Raise error if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.perform_caching = false
+
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for mailgun
-  ActionMailer::Base.smtp_settings = {
+  config.action_mailer.default :charset => "utf-8"
+
+  config.action_mailer.smtp_settings = {
     :port           => 587,
     :address        => "smtp.mailgun.org",
     :domain         => ENV['domain'],
     :user_name      => ENV['username'],
     :password       => ENV['password'],
-    :authentication => :plain,
+    :authentication => :plain
   }
+
 end

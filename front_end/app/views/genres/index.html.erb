@@ -1,0 +1,16 @@
+<section class="genres-index">
+
+  <header class="page-header">
+    <h1>Genres</h1>
+  </header>
+
+  <% @genres.each do |genre|%>
+    <div>
+      <div><%= genre['name'] %>	&nbsp; </div>
+      <%= link_to genre_path(id: genre['id']), class: 'btn btn-default' do %>
+        Filter
+      <% end %>
+    </div>
+  <% end %>
+
+</section>
